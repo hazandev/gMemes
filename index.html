@@ -22,7 +22,7 @@
             <div class="navbar flex align-center space-between">
 
                 <!-- logo -->
-                <div class="logo">Logo</div>
+                <div class="logo">MEME GENERATOR</div>
 
                 <!-- menu -->
                     <ul class="menu flex clean-list">
@@ -111,15 +111,6 @@
                         </div>
                         <div class="row4 flex space-evenly">
                             <!-- row4 -->
-                            <!-- font family -->
-                            <div class="font-family-input">
-                                <div class="dropdown">
-                                    <button class="dropbtn">Dropdown</button>
-                                    <div class="dropdown-content">
-                                    </div>
-                                </div>
-                            </div>
-
                             <!-- stroke -->
                             <button class="btn btn-style" onclick="onStrokeLine()"><img class="icon" src="icons/s.png"
                                     alt="stroke"></button>
@@ -160,16 +151,12 @@
             <div class="gallery-container gallery flex-column ">
                 <!-- search -->
                 <div class="search flex space-between">
-                    <input class="input-search" type="search" name="search" id="search" placeholder="Search" />
+                    <input class="input-search" type="search" name="search" id="search" placeholder="Search" oninput="onSearchMems(value)"/>
 
                     <div class="keywords flex space-evenly">
-                        <ul class="clean-list list-keyword flex space-evenly">
-                            <li onclick="onSearchMems(this)">Man</li>
-                            <li onclick="onSearchMems(this)">Funny</li>
-                            <li onclick="onSearchMems(this)">Sure</li>
-                            <li onclick="onSearchMems(this)">Game</li>
+                        <ul class="list-keyword flex space-evenly clean-list">
                         </ul>
-                        <button class="btn btn-keyword">More</button>
+                        <button class="btn btn-keyword" onclick="onMoreTags()">More</button>
                     </div>
 
                 </div>
@@ -193,9 +180,10 @@
                 <i class="fab fa-3x fa-css3"></i>
                 <i class="fab fa-3x fa-js-square"></i>
             </div>
-            <span class="details">&copy Harel Hazan</span>
+            <span class="details">Harel Hazan</span>
         </footer>
         <!-- script -->
+        <script src="js/utils/util.js"></script>
         <script src="js/service/canvas-service.js"></script>
         <script src="js/service/editor-service.js"></script>
         <script src="js/service/meme-service.js"></script>

@@ -2,19 +2,28 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: Generator;
+    src: url('../fonts/GENERATOR\ PERSONAL\ USE.ttf');
+  }
+  @font-face {
+    font-family: Lato;
+    src: url('../fonts/Lato-Regular.ttf');
+  }
+
+
 /* TYPOGRAPHY */
 
 /* BASE */
 
 html {
-    font-family: playfair, serif;
+    font-family: Lato, serif;
     color: #626262;
     line-height: 1.714;
 }
 
 body {
     margin: 0;
-    font-size: .875rem;
     height: 100vh;
     overflow: hidden;
     background-color: #22252c
@@ -23,7 +32,7 @@ body {
 
 
 h1, h2, h3, h4, h5, h6 {
-    margin: 0 0 1rem;
+    margin: 0 0;
     font-weight: normal;
 }
 
@@ -58,8 +67,7 @@ a:hover {
     max-width: 1700px;
     position: fixed;
     top: 1rem;
-    border-radius: 37px;
-    background-image: linear-gradient(-86deg, #33be6d 0%, #0c98b9 100%);
+    background-image: linear-gradient(-86deg, #be3333 0%, #303536 100%);
 }
 
 .main-container{
@@ -156,7 +164,7 @@ input[type="text"]{
     width: 90%;
     height: 30%;
     border-radius: 15px;
-    background-color: #19a59f;
+    background-image: linear-gradient(-32deg, #be3333 0%, #cecece 100%);
     justify-content: space-evenly;
     
 }
@@ -286,13 +294,18 @@ input[type="text"]{
 
 .btn-keyword{
     width: 25%;
-    background-image: linear-gradient(-86deg, #33be6d 0%, #0c98b9 100%);
+    background-image: linear-gradient(-86deg, #be3333 0%, #303536 100%);
     color: #fefefe;
-    font-family: Poppins;
-    font-size: 18px;
+    font-family: Lato;
+    font-size: 1.3rem;
     font-weight: 300;
     padding: 4px 1rem;
     border-radius: 18px;
+}
+
+.less{
+    background-image: linear-gradient(-86deg, #464545 0%, #d8e6d8 100%);
+    color: #fefefe;
 }
 
 /* COMPONENTS */
@@ -307,8 +320,8 @@ input[type="text"]{
 .logo{
 color: #ffffff;
 width: 50%;
-font-family: Poppins;
-font-size: 1.5rem;
+font-family: Generator;
+font-size: 3rem;
 font-weight: 500;
 text-transform: uppercase;
 }
@@ -320,10 +333,9 @@ text-transform: uppercase;
 
 .menu li a{
     color: #ffffff;
-    font-family: Poppins;
-    font-size: 1.3125rem;
-    font-weight: 500;
-    font-size: 1.5rem;
+    font-family: Generator;
+    font-size: 2rem;
+
 }
 
 .menu .active{
@@ -334,7 +346,7 @@ text-transform: uppercase;
 }
 
 .menu .active a{
-    color: #21ac91;
+    color: #ac2121;
 }
 
 #my-canvas{
@@ -375,7 +387,8 @@ text-transform: uppercase;
     box-shadow: 0 3px 6px 1px rgba(0, 0, 0, 0.15);
 }
 .list-keyword li{
-    font-size: 2rem;
+    align-self: center;
+    cursor: pointer;
     color: rgb(255, 255, 255);
 }
 
@@ -392,15 +405,16 @@ text-transform: uppercase;
     height: 8%;
     bottom: 0;
     left: 0;
-    background-image: linear-gradient(-40deg, #1adfdf 0%, #85daab 100%);
+    background-image: linear-gradient(-86deg, #be3333 0%, #303536 100%);
     border-top: 9px solid rgb(0, 0, 0);
     margin: auto;
 }
 
 span{
-    font-size: 1.5rem;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: rgb(82, 82, 82);
+    font-size: 2rem;
+    font-family: Generator;
+    color: rgb(245, 245, 245);
+
 }
 
 .lang-icons{
@@ -498,7 +512,7 @@ color: #fbc531;
 
     border-radius: 7px;
     background-color: #22252c;
-    background-image: linear-gradient(-86deg, #33be6d 0%, #0c98b9 100%);
+    background-image: linear-gradient(-86deg, #be3333 0%, #303536 100%);
   }
   
   /* Track */
@@ -515,7 +529,7 @@ color: #fbc531;
     /* Style for "Rectangle" */
     border-radius: 7px;
     background-color: #22252c;
-    background-image: linear-gradient(-86deg, #33be6d 0%, #0c98b9 100%);
+    background-image: linear-gradient(-86deg, #be3333 0%, #303536 100%);
     
   }
   
@@ -609,7 +623,6 @@ color: #fbc531;
         align-items: center;
         justify-content: center;
     }
-
     .canvas-container{
         width: 80%;
         height: 40%;
@@ -620,6 +633,4 @@ color: #fbc531;
         height: 50%;
         justify-content: space-evenly;
     }
-
-
 }

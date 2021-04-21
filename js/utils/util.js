@@ -28,3 +28,24 @@ function getRandomIntInclusive(min, max) {
 }
 
 
+function getSizeWindow() {
+    if (window.outerWidth > 1000) {
+        return 'desktop';
+    } else if (window.outerWidth > 800) {
+        return 'tablet';
+    }
+    return 'smartphone';
+}
+
+function getPagging(smartphone, tablet, desktop) {
+    switch (getSizeWindow()) {
+        case 'desktop':
+            return desktop
+        case 'tablet':
+            return tablet
+        case 'smartphone':
+            return smartphone
+        default:
+            break;
+    }
+}

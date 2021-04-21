@@ -62,4 +62,3 @@ function clearCanvas() {
 }
 
 
-function draw() { }
