@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+    <title>Mems Gen</title>
+</head>
+
+<body onload="init()">
+    <div class="container flex">
+
+        <!-- header -->
+        <header class="header-container flex">
+
+            <!-- navbar -->
+            <div class="navbar flex align-center space-between">
+
+                <!-- logo -->
+                <div class="logo">Logo</div>
+
+                <!-- menu -->
+                    <ul class="menu flex clean-list">
+                        <li class="active" onclick="renderPage(this.innerText)">
+                            <a href="#">Gallery</a>
+                        </li>
+
+                        <li onclick="renderPage(this.innerText)">
+                            <a href="#">Memes</a>
+                        </li>
+
+                        <li>
+                            <a onclick="renderPage(this.innerText)" href="#">About</a>
+                        </li>
+                    </ul>
+            </div>
+        </header>
+
+        <main class="container flex space-between align-center ">
+
+            <!-- editor mems -->
+            <div class="editor-container">
+
+                <!-- canvas -->
+                <div class="bg-canvas"></div>
+                <div class="canvas-container" onclick="draw(event)">
+                    <canvas id="my-canvas" width="500" height="500" draggable="true"></canvas>
+                </div>
+
+                <!-- control -->
+                <div class="control-container flex-column align-center">
+                    <!-- row1 -->
+                    <div class="input text-input">
+                        <input type="text" name="text" placeholder="Add Text" oninput="onChangeText(this.value)" />
+                    </div>
+
+                    <!-- switch add delete button-->
+                    <div class="lines-control flex row2 space-evenly ">
+                        <!-- row2 -->
+                        <!-- switch -->
+                        <button class="btn btn-style btn-switch" onclick="onSwitchLine()">
+                            <img class="icon" src="icons/arrow-up.png" alt="">
+                            <img class="icon" src="icons/arrow-down.png" alt="">
+                        </button>
+
+                        <!-- add line -->
+                        <button class="btn btn-style btn-add" onclick="onAddLine()">
+                            <img class="icon" src="icons/+.png" alt="">
+                        </button>
+
+                        <!-- delete -->
+                        <button class="btn btn-style btn-delete" onclick="onDelete()"><img class="icon"
+                                src="icons/delete.png" alt=""></button>
+                    </div>
+
+                    <!-- style text -->
+                    <div class="style-control flex-column space-evenly">
+                        <!-- row3 -->
+                        <div class="row3 flex space-evenly">
+                            <!-- increase font -->
+                            <button class="btn btn-style" onclick="onIncFont()"><img class="icon" src="icons/A+.png"
+                                    alt="">
+                            </button>
+
+                            <!-- decrease font -->
+                            <button class="btn btn-style" onclick="onDecFont()"><img class="icon" src="icons/A-.png"
+                                    alt="">
+                            </button>
+
+                            <!-- align right -->
+                            <button class="btn btn-style" onclick="onAlignLine('right')"><img class="icon"
+                                    src="icons/align-left.png" alt="">
+                            </button>
+
+
+                            <!-- align center -->
+                            <button class="btn btn-style" onclick="onAlignLine('center')"><img class="icon"
+                                    src="icons/align-center.png" alt="">
+                            </button>
+
+                            <!-- align left -->
+                            <button class="btn btn-style" onclick="onAlignLine('left')"><img class="icon"
+                                    src="icons/align-right.png" alt="">
+                            </button>
+
+                        </div>
+                        <div class="row4 flex space-evenly">
+                            <!-- row4 -->
+                            <!-- font family -->
+                            <div class="font-family-input">
+                                <div class="dropdown">
+                                    <button class="dropbtn">Dropdown</button>
+                                    <div class="dropdown-content">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- stroke -->
+                            <button class="btn btn-style" onclick="onStrokeLine()"><img class="icon" src="icons/s.png"
+                                    alt="stroke"></button>
+
+                            <!-- color -->
+                            <button>
+                                <img src="icons/color.png" alt="">
+                                <input type="color" name="color-txt" value="#333" onchange="onTextColor(value)" />
+                            </button>
+                        </div>
+                    </div>
+                    <!-- row6 -->
+                    <div class="row6 flex">
+                        <div class="stickers"></div>
+                        <div class="direction flex-column align-center">
+                            <i onmousedown="onNewLocation('up')" class="fa fa-2x dir fa-chevron-circle-up"></i>
+                            <div class="side flex">
+                                <i onmousedown="onNewLocation('left')" class="fa fa-2x dir fa-chevron-circle-left"></i>
+                                <div class="space"></div>
+                                <i onmousedown="onNewLocation('right')"
+                                    class="fa fa-2x dir fa-chevron-circle-right"></i>
+                            </div>
+                            <i onmousedown="onNewLocation('down')" class="fa fa-2x dir fa-chevron-circle-down"></i>
+                        </div>
+                    </div>
+                    <!-- row7 -->
+                    <!-- user option -->
+                    <div class="action-user flex space-between align-center">
+                        <button class="btn dwn-btn btn-user" onclick="onDownload()"><img src="icons/download.png"
+                                alt="">Download</button>
+                        <button class="btn share-btn btn-user" onclick="onShare()"><img src="icons/share.png"
+                                alt="">Share</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- gallery -->
+            <div class="gallery-container gallery flex-column ">
+                <!-- search -->
+                <div class="search flex space-between">
+                    <input class="input-search" type="search" name="search" id="search" placeholder="Search" />
+
+                    <div class="keywords flex space-evenly">
+                        <ul class="clean-list list-keyword flex space-evenly">
+                            <li onclick="onSearchMems(this)">Man</li>
+                            <li onclick="onSearchMems(this)">Funny</li>
+                            <li onclick="onSearchMems(this)">Sure</li>
+                            <li onclick="onSearchMems(this)">Game</li>
+                        </ul>
+                        <button class="btn btn-keyword">More</button>
+                    </div>
+
+                </div>
+                <!-- images -->
+                <div class="images-container"></div>
+            </div>
+
+            <div class="memes-container memes">
+                <span style="color: azure; font-size: 10rem; text-align: center;">Web page not found</span>
+            </div>
+            <div class="about-container about">
+                <span style="color: azure; font-size: 10rem; text-align: center;">Web page not found</span>
+            </div>
+        </main>
+
+        <!-- footer -->
+        <footer class="footer-container
+        flex space-evenly align-center">
+            <div class="lang-icons flex align-center space-evenly">
+                <i class="fab fa-3x fa-html5"></i>
+                <i class="fab fa-3x fa-css3"></i>
+                <i class="fab fa-3x fa-js-square"></i>
+            </div>
+            <span class="details">&copy Harel Hazan</span>
+        </footer>
+        <!-- script -->
+        <script src="/js/service/canvas-service.js"></script>
+        <script src="/js/service/editor-service.js"></script>
+        <script src="/js/service/meme-service.js"></script>
+        <script src="/js/main.js"></script>
+</body>
+
+</html>
