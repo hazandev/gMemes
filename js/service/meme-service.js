@@ -4,7 +4,7 @@ const KEY = 'mems';
 
 var gMeme;
 
-var gTags = { 'politics': 0, 'animals': 0,'sport': 0, 'thank': 0, 'baby': 0,   'sorry': 0, 'confirm': 0, 'not': 0, 'angry': 0, 'love': 0, 'family': 0, 'smart': 0, 'sleep': 0, 'funny': 0, 'cute': 0, 'victory': 0, 'tv': 0, 'kids': 0 };
+var gTags = { 'politics': 0, 'animals': 0, 'sport': 0, 'thank': 0, 'baby': 0, 'sorry': 0, 'confirm': 0, 'not': 0, 'angry': 0, 'love': 0, 'family': 0, 'smart': 0, 'sleep': 0, 'funny': 0, 'cute': 0, 'victory': 0, 'tv': 0, 'kids': 0 };
 
 var gKeyImage = [
     ['politics', 'funny', 'not'],
@@ -54,11 +54,36 @@ function loadImages() {
     return gImgs;
 }
 
+function searchImage(textSearch) {
+    let imageSearch = [];
+    for (let tag in gTags) {
+        if (textSearch === tag) {
+            imageSearch = _getImageSearch(textSearch);
+            renderImgs(imageSearch);
+        }
+    }
+}
+
+function _getImageSearch(textSearch) {
+    let find = false;
+    let imageSearch = [];
+    gImgs.forEach(img => {
+        find = false;
+        img.keywords.forEach((keyword) => {
+            if (textSearch.includes(keyword)) find = true;
+        })
+        if(find) imageSearch.push(img);
+    })
+    return (imageSearch);
+}
+
+
 function searchTags() {
     _checkPopular();
     renderSearchTags(getTagEl());
     // render list search
 }
+
 
 
 function getTagEl() {
@@ -68,13 +93,13 @@ function getTagEl() {
     let i = 1;
     for (let tag in gTags) {
         let counterTag = gTags[tag];
-        let fontSize = pagintaion * counterTag
+        let fontSize = pagintaion * 2 * counterTag
         if (fontSize > 20) fontSize = 22;
         if (fontSize < 8) fontSize = 10;
-        strHtml += `<li onclick="onSearchMems(this)" style="font-size:${fontSize}px;">${tag}</li>`;
-            if (i % pagintaion === 0) {
-                orderTag.push(strHtml)
-                strHtml = '';
+        strHtml += `<li onclick="onSearchImage(this.outerText)" style="font-size:${fontSize}px;">${tag}</li>`;
+        if (i % pagintaion === 0) {
+            orderTag.push(strHtml)
+            strHtml = '';
         }
         i++
     }
@@ -89,7 +114,7 @@ function _checkPopular() {
     })
 }
 
-function getTags(){
+function getTags() {
     return gTags;
 }
 
@@ -167,7 +192,7 @@ function getGmem() {
     return gMeme;
 }
 
-function setLineIndex(index){
+function setLineIndex(index) {
     gMeme.selectedLineIdx = index;
 }
 

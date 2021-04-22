@@ -1,18 +1,19 @@
 'use strict'
-let sizeWindow = getSizeWindow();
+let gSearchText = '';
 function init() {
     renderImgs();
     searchTags();
 }
 
-function renderImgs() {
+function renderImgs(images = loadImages()) {
     const elImageContainer = document.querySelector('.images-container');
-    let imgs = loadImages();
+    let imgs = images;
     var strHtml = imgs.map(img => {
         return `<img class ="memeImg" onclick="renderPage('editor',this)" data-id="${img.id}" src="${img.url}">`
     });
     elImageContainer.innerHTML = strHtml.join('');
 }
+
 
 function renderPage(showPage, img = null) {
     const pages = ['gallery', 'editor', 'memes', 'about'];
@@ -64,7 +65,10 @@ function renderSearchTags(orderTag, all = false) {
 function openSearchModal(tags){
     document.querySelector('.list-keyword').style.position = 'absolute';
     document.querySelector('.btn-keyword').style.position = 'absolute';
-    document.querySelector('.input-search').style.display = 'none';
+    document.querySelector('.btn-keyword').style.width = '10rem';
+    document.querySelector('.btn-keyword').style.height = '3rem';
+
+    document.querySelector('.input-search').style.opacity = '0';
     document.querySelector('.list-keyword').style.height = '100%';
     document.querySelector('.btn-keyword').style.position = 'relative';
     document.querySelector('.list-keyword').style.position = 'relative';
@@ -74,7 +78,7 @@ function openSearchModal(tags){
 function closeSearchModal(tags){
     document.querySelector('.list-keyword').style.position = 'relative';
     document.querySelector('.btn-keyword').style.position = 'relative';
-    document.querySelector('.input-search').style.display = 'inline-block';
+    document.querySelector('.input-search').style.opacity = '1';
     document.querySelector('.list-keyword').style.width = '100%';
     document.querySelector('.list-keyword').style.height = '100%';
     document.querySelector('.list-keyword').innerHTML = tags;
@@ -96,6 +100,12 @@ function onMoreTags() {
     }
     //render all tags
 }
+
+function onSearchImage(searchVal){
+    gSearchText = searchVal;
+    searchImage(gSearchText);
+}
+
 
 function onShare() {
 
