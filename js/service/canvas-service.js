@@ -12,11 +12,16 @@ function initCanvas() {
     resizeCanvas();
 }
 
+
 function resizeCanvas() {
     var elContainer = document.querySelector('.canvas-container');
     gCanvas.width = elContainer.offsetWidth;
     gCanvas.height = elContainer.offsetHeight;
     _setSizePrecentage();
+}
+
+function getCanvas(){
+    return gCanvas;
 }
 
 function _setSizePrecentage() {

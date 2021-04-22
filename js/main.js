@@ -106,14 +106,40 @@ function onSearchImage(searchVal){
     searchImage(gSearchText);
 }
 
+function onSuccess(uploadedImgUrl) {
+    uploadedImgUrl = encodeURIComponent(uploadedImgUrl);
+    console.log(uploadedImgUrl);
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}`, '_blank')
+
+}
 
 function onShare() {
-
+    var imgContent = getCanvas().toDataURL('image/jpeg')
+    fetch('//ca-upload.com/here/upload.php', {
+        method: 'POST',
+        body: imgContent
+    })
+        .then(function (res) {
+            return res.text()
+        })
+        .then(onSuccess)
+        .catch(function (err) {
+            console.error(err)
+        })
 }
 
-function onDownload() {
+function onDownload(elLink) {
+    var imgContent = getCanvas().toDataURL('image/jpeg')
+    elLink.href = imgContent;
+}
 
+function renderLineControl(line)
+{
+    console.log(line);
+    console.log(document.querySelector('input[name=text]'));
+    document.querySelector('input[name=text]').value = line.txt;
+    document.querySelector('.btn-color').style.backgroundImage = `linear-gradient(-38deg, ${line.color} 0%, ${line.color} 1%, #333 100%)`;
+    document.querySelector('input[name=text]').style.opacity = '1'
 }
 function onSave() {
-
 }

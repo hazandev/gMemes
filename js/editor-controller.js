@@ -21,6 +21,7 @@ function onSwitchLine() {
         gMeme.selectedLineIdx = 0;
     }
     gLine = gMeme.lines[gMeme.selectedLineIdx];
+    renderLineControl(gLine);
     setLineIndex(gMeme.selectedLineIdx)
 }
 

@@ -85,7 +85,6 @@ function searchTags() {
 }
 
 
-
 function getTagEl() {
     let strHtml = ``;
     let orderTag = [];
@@ -172,7 +171,8 @@ function _addLine() {
         location: { xP: 5, yP: yPLocation }
     });
     gMeme.selectedLineIdx++;
-    setCurrectLine(gMeme.lines[gMeme.selectedLineIdx]);
+    setCurrectLine(gMeme.lines[gMeme.lines.length-1]);
+    renderLineControl(gMeme.lines[gMeme.lines.length-1])
 }
 
 function _updateLine(line) {

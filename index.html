@@ -83,7 +83,8 @@
                             <div class="direction flex-column align-center">
                                 <i onmousedown="onNewLocation('up')" class="fa fa-2x dir fa-chevron-circle-up"></i>
                                 <div class="side flex">
-                                    <i onmousedown="onNewLocation('left')" class="fa fa-2x dir fa-chevron-circle-left"></i>
+                                    <i onmousedown="onNewLocation('left')"
+                                        class="fa fa-2x dir fa-chevron-circle-left"></i>
                                     <div class="space"></div>
                                     <i onmousedown="onNewLocation('right')"
                                         class="fa fa-2x dir fa-chevron-circle-right"></i>
@@ -100,8 +101,8 @@
                                 </button>
 
                                 <!-- stroke -->
-                                <button class="btn btn-style" onclick="onStroke()"><img class="icon"
-                                        src="icons/s.png" alt="stroke">
+                                <button class="btn btn-style" onclick="onStroke()"><img class="icon" src="icons/s.png"
+                                        alt="stroke">
                                 </button>
 
                                 <!-- decrease font -->
@@ -128,24 +129,27 @@
                         </div>
                         <div class="column-ctl">
                             <button class="btn-color flex-column space-evenly align-center">
-                                <img class="color-icon"src="icons/Forme_6.svg" alt="">
-                                <input type="color" name="color-txt" value="#333" onchange="onTextColor(value)"/>
+                                <img class="color-icon" src="icons/Forme_6.svg" alt="">
+                                <input type="color" name="color-txt" value="#333" onchange="onTextColor(value)" />
                             </button>
                         </div>
                     </div>
                     <!-- user option -->
                     <div class="action-user flex space-between align-center">
-                        <button class="btn save-btn btn-user flex align-center" onclick="onDownload()"><img class="save-img" src="icons/icons8-save-64.png"
-                            alt="">Save</button>
+                        <button class="btn save-btn btn-user flex align-center" onclick="onDownload()"><img
+                                class="save-img" src="icons/icons8-save-64.png" alt="">Save</button>
 
-                        <button class="btn dwn-btn btn-user flex align-center space-evenly" onclick="onDownload()"><img src="icons/download.svg"
-                                alt="">Download</button>
+                        <a href="#" class="btn dwn-btn btn-user flex align-center space-evenly"
+                            onclick="onDownload(this)" download="my-mems.jpg"><img src="icons/download.svg"
+                                alt="">Download</a>
 
-                        <button class="btn share-btn btn-user flex align-center" onclick="onShare()"><img src="icons/share.svg" 
-                                alt="">Share</button>
+                        <button class="btn share-btn btn-user flex align-center" onclick="onShare()"><img
+                                src="icons/share.svg" alt="">Share</button>
                     </div>
                 </div>
             </div>
+
+
 
             <!-- gallery -->
             <div class="gallery-container gallery flex-column ">
