@@ -102,7 +102,7 @@ function onMoreTags() {
 }
 
 function onSearchImage(searchVal){
-    gSearchText = searchVal;
+    gSearchText = searchVal.toLowerCase();
     searchImage(gSearchText);
 }
 

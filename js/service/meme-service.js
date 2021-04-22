@@ -65,6 +65,7 @@ function searchImage(textSearch) {
 }
 
 function _getImageSearch(textSearch) {
+    console.log(textSearch);
     let find = false;
     let imageSearch = [];
     gImgs.forEach(img => {
