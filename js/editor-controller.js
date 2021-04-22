@@ -2,15 +2,31 @@
 
 let gLine;
 
-function setCurrectLine(currLine) {
-    gLine = currLine;
-}
-
 function initEditor(img) {
     const idImg = parseInt(img.getAttribute('data-id'));
     initGmem(idImg);
     initCanvas();
     drawImg();
+}
+
+function setCurrectLine(indexLine){
+    gLine = indexLine;
+};
+
+function onSwitchLine() {
+    let gMeme = getGmem();
+    if (gMeme.selectedLineIdx < gMeme.lines.length - 1) {
+        gMeme.selectedLineIdx++;
+    } else {
+        gMeme.selectedLineIdx = 0;
+    }
+    gLine = gMeme.lines[gMeme.selectedLineIdx];
+    setLineIndex(gMeme.selectedLineIdx)
+}
+
+
+function onNewLocation(movement) {
+    editLocation(movement);
 }
 
 function onChangeText(newText) {
@@ -19,6 +35,7 @@ function onChangeText(newText) {
 }
 
 function onTextColor(newColor) {
+    document.querySelector('.btn-color').style.background = `${newColor}` 
     gLine.color = newColor;
     apiLine('update', gLine);
 }
@@ -47,10 +64,9 @@ function onAddLine() {
     apiLine('add');
 }
 
-function apiDeleteLine() {
+function onDeleteLine() {
     apiLine('delete');
 }
-
 
 function editLocation(movement){
     switch (movement) {

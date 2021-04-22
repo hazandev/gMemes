@@ -47,26 +47,37 @@ function renderLine(lines) {
     })
 }
 
-function onSwitchLine() {
-    switchLine();
+function renderSearchTags(orderTag, all = false) {
+    if (!all) {
+        closeSearchModal()
+        document.querySelector('.list-keyword').innerHTML = orderTag[0];
+    } else {
+        console.log(orderTag);
+        let renderTags = ``;
+        orderTag.forEach(tagLine => {
+            renderTags +=  `<div>${tagLine}</div>` 
+        })
+        openSearchModal(renderTags);
+    }
 }
 
-function onStrokeLine() {
-    onStroke();
+function openSearchModal(tags){
+    document.querySelector('.list-keyword').style.position = 'absolute';
+    document.querySelector('.btn-keyword').style.position = 'absolute';
+    document.querySelector('.input-search').style.display = 'none';
+    document.querySelector('.list-keyword').style.height = '100%';
+    document.querySelector('.btn-keyword').style.position = 'relative';
+    document.querySelector('.list-keyword').style.position = 'relative';
+    document.querySelector('.list-keyword').innerHTML = tags;
 }
 
-function onDelete() {
-    apiDeleteLine();
-}
-
-function onNewLocation(movement) {
-    editLocation(movement);
-}
-
-function renderSearchTags(orderTag) {
-    console.log(document.querySelector('.list-keyword'));
-    console.log(orderTag[0]);
-    document.querySelector('.list-keyword').innerHTML = orderTag[0];
+function closeSearchModal(tags){
+    document.querySelector('.list-keyword').style.position = 'relative';
+    document.querySelector('.btn-keyword').style.position = 'relative';
+    document.querySelector('.input-search').style.display = 'inline-block';
+    document.querySelector('.list-keyword').style.width = '100%';
+    document.querySelector('.list-keyword').style.height = '100%';
+    document.querySelector('.list-keyword').innerHTML = tags;
 }
 
 function onSearchMems(value) {
@@ -74,13 +85,25 @@ function onSearchMems(value) {
 }
 
 function onMoreTags() {
-
     const elBtnMore = document.querySelector('.btn-keyword');
-    elBtnMore.textContent = 'Less'
-    if (document.querySelector('.less')){
-        elBtnMore.textContent = 'More'
-    } 
+    elBtnMore.textContent = 'More'
     elBtnMore.classList.toggle('less');
+    if (document.querySelector('.less')) {
+        elBtnMore.textContent = 'Less'
+        renderSearchTags(getTagEl(), true);
+    } else {
+        renderSearchTags(getTagEl(), false);
+    }
+    //render all tags
+}
+
+function onShare() {
 
 }
 
+function onDownload() {
+
+}
+function onSave() {
+
+}

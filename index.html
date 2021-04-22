@@ -16,7 +16,7 @@
     <div class="container flex">
 
         <!-- header -->
-        <header class="header-container flex">
+        <header class="header-container flex align-center">
 
             <!-- navbar -->
             <div class="navbar flex align-center space-between">
@@ -25,19 +25,19 @@
                 <div class="logo">MEME GENERATOR</div>
 
                 <!-- menu -->
-                    <ul class="menu flex clean-list">
-                        <li class="active" onclick="renderPage(this.innerText)">
-                            <a href="#">Gallery</a>
-                        </li>
+                <ul class="menu flex clean-list align-center">
+                    <li class="active" onclick="renderPage(this.innerText)">
+                        <a href="#">Gallery</a>
+                    </li>
 
-                        <li onclick="renderPage(this.innerText)">
-                            <a href="#">Memes</a>
-                        </li>
+                    <li onclick="renderPage(this.innerText)">
+                        <a href="#">Memes</a>
+                    </li>
 
-                        <li>
-                            <a onclick="renderPage(this.innerText)" href="#">About</a>
-                        </li>
-                    </ul>
+                    <li>
+                        <a onclick="renderPage(this.innerText)" href="#">About</a>
+                    </li>
+                </ul>
             </div>
         </header>
 
@@ -58,14 +58,12 @@
                     <div class="input text-input">
                         <input type="text" name="text" placeholder="Add Text" oninput="onChangeText(this.value)" />
                     </div>
-
                     <!-- switch add delete button-->
-                    <div class="lines-control flex row2 space-evenly ">
-                        <!-- row2 -->
+                    <div class="lines-control flex align-center space-evenly">
                         <!-- switch -->
                         <button class="btn btn-style btn-switch" onclick="onSwitchLine()">
-                            <img class="icon" src="icons/arrow-up.png" alt="">
-                            <img class="icon" src="icons/arrow-down.png" alt="">
+                            <img class="icon" src="icons/arrow-up.svg" alt="">
+                            <img class="icon" src="icons/arrow-down.svg" alt="">
                         </button>
 
                         <!-- add line -->
@@ -74,74 +72,76 @@
                         </button>
 
                         <!-- delete -->
-                        <button class="btn btn-style btn-delete" onclick="onDelete()"><img class="icon"
-                                src="icons/delete.png" alt=""></button>
+                        <button class="btn btn-style btn-delete" onclick="onDeleteLine()"><img class="icon"
+                                src="icons/delete.svg" alt=""></button>
                     </div>
 
                     <!-- style text -->
-                    <div class="style-control flex-column space-evenly">
-                        <!-- row3 -->
-                        <div class="row3 flex space-evenly">
-                            <!-- increase font -->
-                            <button class="btn btn-style" onclick="onIncFont()"><img class="icon" src="icons/A+.png"
-                                    alt="">
-                            </button>
-
-                            <!-- decrease font -->
-                            <button class="btn btn-style" onclick="onDecFont()"><img class="icon" src="icons/A-.png"
-                                    alt="">
-                            </button>
-
-                            <!-- align right -->
-                            <button class="btn btn-style" onclick="onAlignLine('right')"><img class="icon"
-                                    src="icons/align-left.png" alt="">
-                            </button>
-
-
-                            <!-- align center -->
-                            <button class="btn btn-style" onclick="onAlignLine('center')"><img class="icon"
-                                    src="icons/align-center.png" alt="">
-                            </button>
-
-                            <!-- align left -->
-                            <button class="btn btn-style" onclick="onAlignLine('left')"><img class="icon"
-                                    src="icons/align-right.png" alt="">
-                            </button>
-
-                        </div>
-                        <div class="row4 flex space-evenly">
-                            <!-- row4 -->
-                            <!-- stroke -->
-                            <button class="btn btn-style" onclick="onStrokeLine()"><img class="icon" src="icons/s.png"
-                                    alt="stroke"></button>
-
-                            <!-- color -->
-                            <button>
-                                <img src="icons/color.png" alt="">
-                                <input type="color" name="color-txt" value="#333" onchange="onTextColor(value)" />
-                            </button>
-                        </div>
-                    </div>
-                    <!-- row6 -->
-                    <div class="row6 flex">
-                        <div class="stickers"></div>
-                        <div class="direction flex-column align-center">
-                            <i onmousedown="onNewLocation('up')" class="fa fa-2x dir fa-chevron-circle-up"></i>
-                            <div class="side flex">
-                                <i onmousedown="onNewLocation('left')" class="fa fa-2x dir fa-chevron-circle-left"></i>
-                                <div class="space"></div>
-                                <i onmousedown="onNewLocation('right')"
-                                    class="fa fa-2x dir fa-chevron-circle-right"></i>
+                    <div class="style-control flex align-center space-evenly">
+                        <!-- col1 -->
+                        <div class="column-ctl">
+                            <div class="direction flex-column align-center">
+                                <i onmousedown="onNewLocation('up')" class="fa fa-2x dir fa-chevron-circle-up"></i>
+                                <div class="side flex">
+                                    <i onmousedown="onNewLocation('left')" class="fa fa-2x dir fa-chevron-circle-left"></i>
+                                    <div class="space"></div>
+                                    <i onmousedown="onNewLocation('right')"
+                                        class="fa fa-2x dir fa-chevron-circle-right"></i>
+                                </div>
+                                <i onmousedown="onNewLocation('down')" class="fa fa-2x dir fa-chevron-circle-down"></i>
                             </div>
-                            <i onmousedown="onNewLocation('down')" class="fa fa-2x dir fa-chevron-circle-down"></i>
+                        </div>
+                        <div class="column-ctl col-width flex-column space-evenly">
+                            <!-- row1 -->
+                            <div class="row flex space-evenly ">
+                                <!-- increase font -->
+                                <button class="btn btn-style" onclick="onIncFont()"><img class="icon" src="icons/A+.png"
+                                        alt="">
+                                </button>
+
+                                <!-- stroke -->
+                                <button class="btn btn-style" onclick="onStroke()"><img class="icon"
+                                        src="icons/s.png" alt="stroke">
+                                </button>
+
+                                <!-- decrease font -->
+                                <button class="btn btn-style" onclick="onDecFont()"><img class="icon" src="icons/A-.png"
+                                        alt="">
+                                </button>
+                            </div>
+                            <!-- row2 -->
+                            <div class="row flex space-evenly">
+                                <!-- align right -->
+                                <button class="btn btn-style" onclick="onAlignLine('right')"><img class="icon"
+                                        src="icons/align-left.svg" alt="">
+                                </button>
+                                <!-- align center -->
+                                <button class="btn btn-style" onclick="onAlignLine('center')"><img class="icon"
+                                        src="icons/align-center.svg" alt="">
+                                </button>
+
+                                <!-- align left -->
+                                <button class="btn btn-style" onclick="onAlignLine('left')"><img class="icon"
+                                        src="icons/align-right.svg" alt="">
+                                </button>
+                            </div>
+                        </div>
+                        <div class="column-ctl">
+                            <button class="btn-color flex-column space-evenly align-center">
+                                <img class="color-icon"src="icons/Forme_6.svg" alt="">
+                                <input type="color" name="color-txt" value="#333" onchange="onTextColor(value)"/>
+                            </button>
                         </div>
                     </div>
-                    <!-- row7 -->
                     <!-- user option -->
                     <div class="action-user flex space-between align-center">
-                        <button class="btn dwn-btn btn-user" onclick="onDownload()"><img src="icons/download.png"
+                        <button class="btn save-btn btn-user flex align-center" onclick="onDownload()"><img class="save-img" src="icons/icons8-save-64.png"
+                            alt="">Save</button>
+
+                        <button class="btn dwn-btn btn-user flex align-center space-evenly" onclick="onDownload()"><img src="icons/download.svg"
                                 alt="">Download</button>
-                        <button class="btn share-btn btn-user" onclick="onShare()"><img src="icons/share.png"
+
+                        <button class="btn share-btn btn-user flex align-center" onclick="onShare()"><img src="icons/share.svg" 
                                 alt="">Share</button>
                     </div>
                 </div>
@@ -151,7 +151,8 @@
             <div class="gallery-container gallery flex-column ">
                 <!-- search -->
                 <div class="search flex space-between">
-                    <input class="input-search" type="search" name="search" id="search" placeholder="Search" oninput="onSearchMems(value)"/>
+                    <input class="input-search" type="search" name="search" id="search" placeholder="Search"
+                        oninput="onSearchMems(value)" />
 
                     <div class="keywords flex space-evenly">
                         <ul class="list-keyword flex space-evenly clean-list">
@@ -185,8 +186,8 @@
         <!-- script -->
         <script src="js/utils/util.js"></script>
         <script src="js/service/canvas-service.js"></script>
-        <script src="js/service/editor-service.js"></script>
         <script src="js/service/meme-service.js"></script>
+        <script src="js/editor-controller.js"></script>
         <script src="js/main.js"></script>
 </body>
 
