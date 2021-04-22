@@ -1,7 +1,6 @@
 'use strict'
 let gSearchText = '';
-
-function onInit() {
+function init() {
     renderImgs();
     searchTags();
 }

@@ -380,7 +380,7 @@ text-transform: uppercase;
 }
 .input-search{
     height: 3rem;
-    width: 45%;
+    width: 30%;
     height: 100%;
     border-radius: 29px;
     background-color: #22252c;
@@ -399,6 +399,7 @@ text-transform: uppercase;
 .keywords{
     width: 55%;
     height: 100%;
+    
 }
 
 .list-keyword{
