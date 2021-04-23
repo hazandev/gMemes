@@ -710,22 +710,27 @@ color: #fbc531;
     
     .editor-container{
         width: 100vw;
-        height: 90%;
-        top: -10%;
+        height: 80%;
         bottom: 0;
         flex-direction: column;
         align-items: center;
-        justify-content: space-between;
         transition:  .3s;
     }
 
     .bg-canvas{display: none;}
     .canvas-container{
+        position: relative;
         width: 95%;
-        height: 50%;
+        height: 100%;
         margin: 4px 4px;
         border: 2px solid rgb(149, 149, 149);
         border-radius: 4px;
+    }
+    .control-container{
+        position: relative;
+        bottom: 0;
+    }
+    .style-control{
     }
     #my-canvas{
         border-radius: 4px;
