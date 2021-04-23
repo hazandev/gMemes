@@ -34,6 +34,10 @@ function renderPage(showPage, img = null) {
     if (pageLCase === 'editor') initEditor(img);
 }
 
+function toggleMenu() {
+    console.log('aa');
+    document.body.classList.toggle('menu-open')
+}
 
 function renderCanvas() {
     const gMeme = getGmem();

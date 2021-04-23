@@ -3,15 +3,15 @@
 let gLine;
 
 function initEditor(img) {
-    const idImg = parseInt(img.getAttribute('data-id'));
-    initGmem(idImg);
+    const imgId = parseInt(img.getAttribute('data-id'));
+    initGmem(imgId);
     initCanvas();
     drawImg();
 }
 
 function setCurrectLine(indexLine){
     gLine = indexLine;
-};
+}
 
 function onSwitchLine() {
     let gMeme = getGmem();
@@ -30,14 +30,14 @@ function onNewLocation(movement) {
     editLocation(movement);
 }
 
-function onChangeText(newText) {
-    gLine.txt = newText;
+function onChangeText(txt) {
+    gLine.txt = txt;
     apiLine('update', gLine);
 }
 
-function onTextColor(newColor) {
-    document.querySelector('.btn-color').style.background = `${newColor}` 
-    gLine.color = newColor;
+function onTextColor(color) {
+    document.querySelector('.btn-color').style.background = `${color}` 
+    gLine.color = color;
     apiLine('update', gLine);
 }
 
